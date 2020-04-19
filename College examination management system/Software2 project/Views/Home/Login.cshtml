@@ -1,0 +1,34 @@
+﻿@model Software2_project.Models.AdminModel
+@{
+    ViewBag.Title = "Login";
+    if (Session["role"] == null)
+    { Layout = "~/Views/Shared/HomeLayout.cshtml"; }
+    else if(Session["role"].Equals("admin"))
+    { Layout = "~/Views/Shared/AdminLayout.cshtml"; }
+}
+
+@using (Html.BeginForm("LoginConfirmmed", "Home"))
+{
+    <h2 style="text-align:center; font-weight:bold; width:20%; margin-right:auto; margin-left:auto; margin-bottom:12px;">
+        <span style="border-bottom:1.5px solid">Login</span>
+    </h2>
+
+    <div class="form-group" style="font-weight:bold">
+        @Html.LabelFor(m => m.username)
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Enter Your Username" })
+        @Html.ValidationMessageFor(m => m.username)
+    </div>
+
+    <div id="gone" class="form-group" style="font-weight:bold">
+        @Html.LabelFor(m => m.password)
+        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Enter Your Password" })
+        @Html.ValidationMessageFor(m => m.password)
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="border-radius:10px;margin-top:10px">Submit</button>
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
