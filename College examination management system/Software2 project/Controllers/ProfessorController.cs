@@ -169,5 +169,33 @@ namespace Software2_project.Controllers
 
             return RedirectToAction("login", "Home");
         }
+
+        public ActionResult deleteQuestion(short id)
+        {
+            if (Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                QuestionModel question = _context.questionDb.Find(id);
+                if (question == null)
+                    return HttpNotFound();
+
+                return View(question);
+            }
+
+            else return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost, ActionName("deleteQuestion")]
+        public ActionResult deleteConfirmedProf(short id)
+        {
+            if (Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                QuestionModel question = _context.questionDb.Find(id);
+                _context.questionDb.Remove(question);
+                _context.SaveChanges();
+                return RedirectToAction("editExam", new RouteValueDictionary(new { Controller = "Professor", Action = "editExam", id = question.CourseId }));
+            }
+
+            else return RedirectToAction("login", "Home");
+        }
     }
 }

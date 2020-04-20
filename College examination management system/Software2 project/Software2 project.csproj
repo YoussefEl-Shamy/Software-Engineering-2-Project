@@ -252,6 +252,7 @@
     <Content Include="Views\Professor\listExams.cshtml" />
     <Content Include="Views\Professor\editExam.cshtml" />
     <Content Include="Views\Professor\deleteExam.cshtml" />
+    <Content Include="Views\Professor\deleteQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

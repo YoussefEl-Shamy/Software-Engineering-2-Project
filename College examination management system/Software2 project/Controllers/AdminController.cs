@@ -250,7 +250,7 @@ namespace Software2_project.Controllers
                 return View(prof);
             }
             
-            else return RedirectToAction("Index", "Home");
+            else return RedirectToAction("login", "Home");
         }
 
         [HttpPost, ActionName("deleteProfessor")]
@@ -264,7 +264,7 @@ namespace Software2_project.Controllers
                 return RedirectToAction("listProfessors", "Admin");
             }
 
-            else return RedirectToAction("Index", "Home");
+            else return RedirectToAction("login", "Home");
         }
 
         //-------------------------------------------------Course----------------------------------------
