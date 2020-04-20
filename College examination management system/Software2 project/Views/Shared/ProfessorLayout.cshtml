@@ -46,12 +46,15 @@
         <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="font-weight: bold">
             <img src="~/robot.png" height="40" style="margin-right:-15px;" /><span style="z-index:-1">FCAIH</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @if (Session["username"] != null)
+                    {
+                        <a style="font-weight:bold" class="nav-link" href="@Url.Action("editProfessorProfile", "Professor",new { id = Session["id"] },null)">Profile</a>
+                    }
+                </li>
                 <li class="nav-item">
                     <div class="dropdown">
                         <button class="nav-link" style="background:none; border:hidden">Exams</button>

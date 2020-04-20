@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,9 +254,13 @@
     <Content Include="Views\Professor\editExam.cshtml" />
     <Content Include="Views\Professor\deleteExam.cshtml" />
     <Content Include="Views\Professor\deleteQuestion.cshtml" />
+    <Content Include="Views\Admin\updateProfile.cshtml" />
+    <Content Include="Views\Professor\editProfessorProfile.cshtml" />
+    <Content Include="Views\Admin\editAdminProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
