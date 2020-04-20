@@ -3,6 +3,10 @@
     ViewBag.Title = "listCourses";
     if (Session["role"] == null)
     { Layout = "~/Views/Shared/HomeLayout.cshtml"; }
+    else if(Session["role"].Equals("professor"))
+    { Layout = "~/Views/Shared/ProfessorLayout.cshtml"; }
+    else if(Session["role"].Equals("student"))
+    { Layout = "~/Views/Shared/StudentLayout.cshtml"; }
     else if(Session["role"].Equals("admin"))
     { Layout = "~/Views/Shared/AdminLayout.cshtml"; }
 }
