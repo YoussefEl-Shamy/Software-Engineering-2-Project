@@ -12,6 +12,7 @@ using System.Web.Routing;
 
 namespace Software2_project.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0)]
     public class AdminController : Controller
     {
         private examinationContext _context;

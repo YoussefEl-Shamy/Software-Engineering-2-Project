@@ -10,6 +10,7 @@ using Software2_project.ViewModel;
 
 namespace Software2_project.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0)]
     public class ProfessorController : Controller
     {
         examinationContext _context = new examinationContext();

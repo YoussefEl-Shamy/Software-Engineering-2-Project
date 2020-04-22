@@ -8,7 +8,7 @@
     <span style="border-bottom:1.5px solid;">(@Model.course.name) Exam</span>
 </h2>
 
-@using (Html.BeginForm("updateExam", "Professor"))
+@using (Html.BeginForm("calculateGrade", "Student"))
 {
     for (int i = 0; i < Model.questions.Count(); i++)
     {
@@ -19,13 +19,13 @@
 
         <div class="grid" style="font-weight: bold">
             <label class="custom-control custom-radio">
-                @Html.RadioButtonFor(m => m.questions[i].selectChoice, "", new { id = "choice1" + i, @class = "custom-control-input" })
+                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer1, new { id = "choice1" + i, @class = "custom-control-input" })
                 @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
                 <br />
             </label>
 
             <label class="custom-control custom-radio">
-                @Html.RadioButtonFor(m => m.questions[i].selectChoice, "", new { id = "choice2" + i, @class = "custom-control-input" })
+                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer2, new { id = "choice2" + i, @class = "custom-control-input" })
                 @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
                 <br />
             </label>
@@ -58,6 +58,7 @@
             }
         </div>
         <hr style="background-color:rgb(235, 100, 0); height: 2px" />
+        @Html.HiddenFor(m => m.course.id)
     }
 
     <button type="submit" class="btn btn-primary" style="border-radius:10px;margin-top:10px">Save Answers</button>

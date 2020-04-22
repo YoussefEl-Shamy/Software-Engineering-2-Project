@@ -14,6 +14,6 @@ namespace Software2_project.Models
         [Required]
         public short course_id { get; set; }
         [Required]
-        public short grade { get; set; }
+        public float grade { get; set; }
     }
 }

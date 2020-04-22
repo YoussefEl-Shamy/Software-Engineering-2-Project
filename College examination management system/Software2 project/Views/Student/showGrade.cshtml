@@ -1,0 +1,26 @@
+﻿@model Software2_project.ViewModel.CourseExamViewModel
+@{
+    ViewBag.Title = "showGrade";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<div>
+    <span style="font-size:40px">Your Grade in @Model.course.name Exam: </span>
+    @if (Model.exam.grade > 50)
+    {
+        <span style="color:#2fd300;font-weight: bold; font-size:40px">@Model.exam.grade</span><span>/100</span><br />
+        <span>You have passed this exam, <span style="color:rgb(235, 100, 0); font-weight:bold">Congratulations</span>.</span>
+    }
+    else
+    {
+        <span style="color:#e10000;font-weight: bold; font-size:40px">@Model.exam.grade</span><span>/100</span><br />
+        <span style="color:rgb(235, 100, 0); font-weight:bold">Sorry, </span><span>You haven't passed this exam.</span>
+    }
+</div>
+
+
+<style>
+    div {
+        text-align: center
+    }
+</style>

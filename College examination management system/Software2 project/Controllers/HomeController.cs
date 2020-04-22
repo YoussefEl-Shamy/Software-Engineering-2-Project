@@ -8,7 +8,7 @@ using Software2_project.Context;
 
 namespace Software2_project.Controllers
 {
-    
+    [OutputCache(NoStore = true, Duration = 0)]
     public class HomeController : Controller
     {
         examinationContext DB = new examinationContext();
@@ -18,6 +18,8 @@ namespace Software2_project.Controllers
         }
 
         private examinationContext _context;
+
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Login()
         {
             return View();

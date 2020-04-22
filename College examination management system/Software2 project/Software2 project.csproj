@@ -179,6 +179,10 @@
     <Compile Include="Migrations\202004220220046_addingExamWithGradesTable.designer.cs">
       <DependentUpon>202004220220046_addingExamWithGradesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004220304241_changing_Grade_Data_Type_To_float.cs" />
+    <Compile Include="Migrations\202004220304241_changing_Grade_Data_Type_To_float.designer.cs">
+      <DependentUpon>202004220304241_changing_Grade_Data_Type_To_float.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\CourseModel.cs" />
@@ -188,6 +192,7 @@
     <Compile Include="Models\QuestionModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CourseExamViewModel.cs" />
     <Compile Include="ViewModel\CourseQuestionsViewModel.cs" />
     <Compile Include="ViewModel\ProfessorCourseViewModel.cs" />
     <Compile Include="ViewModel\QuestionCourseViewModel.cs" />
@@ -266,6 +271,7 @@
     <Content Include="Views\Student\editStudentProfile.cshtml" />
     <Content Include="Views\Student\listExams.cshtml" />
     <Content Include="Views\Student\showExam.cshtml" />
+    <Content Include="Views\Student\showGrade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220220046_addingExamWithGradesTable.resx">
       <DependentUpon>202004220220046_addingExamWithGradesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004220304241_changing_Grade_Data_Type_To_float.resx">
+      <DependentUpon>202004220304241_changing_Grade_Data_Type_To_float.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
