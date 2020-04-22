@@ -125,9 +125,10 @@ namespace Software2_project.Controllers
 
                 for (int i=0; i<viewModel.questions.Count(); i++)
                     if(viewModel.questions[i].selectChoice != null && viewModel.questions[i].selectChoice.Equals(examQuestions[i].rightAnswer))
-                        studentGrade = studentGrade + (100/examQuestions.Count());
-                
-                exam.grade = studentGrade;
+                        studentGrade = studentGrade + (float)(100.0/examQuestions.Count());
+
+                float studentGrade1 = (float)Math.Round(studentGrade * 100f) / 100f;
+                exam.grade = studentGrade1;
 
                 _context.exam_gradeDb.Add(exam);
                 _context.SaveChanges();
