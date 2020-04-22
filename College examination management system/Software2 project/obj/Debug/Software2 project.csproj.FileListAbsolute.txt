@@ -622,3 +622,4 @@ E:\Github Projects\SWE 2 Project\Software-Engineering-2-Project\College examinat
 E:\Github Projects\SWE 2 Project\Software-Engineering-2-Project\College examination management system\Software2 project\obj\Debug\Software2 project.pdb
 E:\Github Projects\SWE 2 Project\Software-Engineering-2-Project\College examination management system\Software2 project\obj\Debug\Software2_project.Migrations.creatingQuestionTable.resources
 E:\Github Projects\SWE 2 Project\Software-Engineering-2-Project\College examination management system\Software2 project\obj\Debug\Software2_project.Migrations.addingRightAnswer.resources
+E:\Github Projects\SWE 2 Project\Software-Engineering-2-Project\College examination management system\Software2 project\obj\Debug\Software2_project.Migrations.addingExamWithGradesTable.resources

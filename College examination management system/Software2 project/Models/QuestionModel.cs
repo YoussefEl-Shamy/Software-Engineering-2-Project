@@ -29,6 +29,8 @@ namespace Software2_project.Models
         [Required]
         [Display(Name = "Right Answer")]
         public string rightAnswer { get; set; }
+        [NotMapped]
+        public virtual string selectChoice { get; set; }
 
         [ForeignKey("CourseModel")]
         [Required]

@@ -14,6 +14,7 @@ namespace Software2_project.Context
         public DbSet<ProfessorModel> professorDb { get; set; }
         public DbSet<CourseModel> courseDb { get; set; }
         public DbSet<QuestionModel> questionDb { get; set; }
+        public DbSet<ExamModel> exam_gradeDb { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

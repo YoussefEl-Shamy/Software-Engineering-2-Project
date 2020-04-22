@@ -63,7 +63,7 @@ namespace Software2_project.Controllers
                 professorInDb.username = professor.username;
 
                 _context.SaveChanges();
-                return RedirectToAction("editProfessorProfile", new RouteValueDictionary(new { Controller = "Professor", Action = "editProfile", id = professor.id }));
+                return RedirectToAction("editProfessorProfile", new RouteValueDictionary(new { Controller = "Professor", Action = "editProfessorProfile", id = professor.id }));
             }
 
             return RedirectToAction("Index", "Home");

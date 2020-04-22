@@ -1,0 +1,77 @@
+﻿@model Software2_project.ViewModel.CourseQuestionsViewModel
+@{
+    ViewBag.Title = "showExam";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<h2 style="text-align:center; font-weight:bold; margin-right:auto; margin-left:auto; margin-bottom:12px;">
+    <span style="border-bottom:1.5px solid;">(@Model.course.name) Exam</span>
+</h2>
+
+@using (Html.BeginForm("updateExam", "Professor"))
+{
+    for (int i = 0; i < Model.questions.Count(); i++)
+    {
+        <p style="font-weight:bold; border:1.5px solid rgb(235, 100, 0); padding:10px; margin: 35px 0 35px 0; border-radius: 15px">
+            <span style="margin-right:10px;">Question @(i + 1):</span>
+            @Model.questions[i].question
+        </p>
+
+        <div class="grid" style="font-weight: bold">
+            <label class="custom-control custom-radio">
+                @Html.RadioButtonFor(m => m.questions[i].selectChoice, "", new { id = "choice1" + i, @class = "custom-control-input" })
+                @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
+                <br />
+            </label>
+
+            <label class="custom-control custom-radio">
+                @Html.RadioButtonFor(m => m.questions[i].selectChoice, "", new { id = "choice2" + i, @class = "custom-control-input" })
+                @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
+                <br />
+            </label>
+
+            @if (Model.questions[i].answer3 != null)
+            {
+                <label class="custom-control custom-radio">
+                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer3, new { id = "choice3" + i, @class = "custom-control-input" })
+                    @Html.Label(Model.questions[i].answer3, new { @for = "choice3" + i, @class = "custom-control-label" })
+                    <br />
+                </label>
+            }
+
+            @if (Model.questions[i].answer4 != null)
+            {
+                <label class="custom-control custom-radio">
+                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer4, new { id = "choice4" + i, @class = "custom-control-input" })
+                    @Html.Label(Model.questions[i].answer4, new { @for = "choice4" + i, @class = "custom-control-label" })
+                    <br />
+                </label>
+            }
+
+            @if (Model.questions[i].answer5 != null)
+            {
+                <label class="custom-control custom-radio">
+                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer5, new { id = "choice4" + i, @class = "custom-control-input" })
+                    @Html.Label(Model.questions[i].answer5, new { @for = "choice4" + i, @class = "custom-control-label" })
+                    <br />
+                </label>
+            }
+        </div>
+        <hr style="background-color:rgb(235, 100, 0); height: 2px" />
+    }
+
+    <button type="submit" class="btn btn-primary" style="border-radius:10px;margin-top:10px">Save Answers</button>
+}
+
+<style>
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 25px
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
