@@ -30,6 +30,7 @@ namespace Software2_project.Models
         [Display(Name = "Right Answer")]
         public string rightAnswer { get; set; }
         [NotMapped]
+        [Required(ErrorMessage ="Choose the right answer")]
         public virtual string selectChoice { get; set; }
 
         [ForeignKey("CourseModel")]

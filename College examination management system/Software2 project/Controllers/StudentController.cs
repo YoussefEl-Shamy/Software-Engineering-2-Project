@@ -90,9 +90,9 @@ namespace Software2_project.Controllers
             if (Session["username"] != null && Session["role"].Equals("student"))
             {
                 var studentId = (short)Session["id"];
-                var exam = _context.exam_gradeDb.Where(e => e.student_id == studentId && e.course_id == id).FirstOrDefault();
+                var examTest = _context.exam_gradeDb.Where(e => e.student_id == studentId && e.course_id == id).FirstOrDefault();
 
-                if (exam == null)
+                if (examTest == null)
                 {
                     var questions = _context.questionDb.Where(q => q.CourseId == id).ToList();
                     CourseModel course = _context.courseDb.Single(c => c.id == id);
@@ -103,6 +103,12 @@ namespace Software2_project.Controllers
                         questions = questions
                     };
 
+                    ExamModel exam = new ExamModel();
+                    exam.course_id = id;
+                    exam.student_id = (short)Session["id"];
+                    exam.grade = 0;
+                    _context.exam_gradeDb.Add(exam);
+                    _context.SaveChanges();
                     return View(viewModel);
                 }
                 else return RedirectToAction("showGrade", new RouteValueDictionary(new { Controller = "Student", Action = "showGrade", id = id }));
@@ -117,9 +123,8 @@ namespace Software2_project.Controllers
         {
             if (Session["username"] != null && Session["role"].Equals("student"))
             {
-                ExamModel exam = new ExamModel();
-                exam.student_id = (short)Session["id"];
-                exam.course_id = viewModel.course.id;
+                var studentId = (short)Session["id"];
+                var exam = _context.exam_gradeDb.Single(e => e.student_id == studentId && e.course_id == viewModel.course.id);
                 var examQuestions = _context.questionDb.Where(e => e.CourseId == viewModel.course.id).ToList();
                 float studentGrade = 0;
 
@@ -130,10 +135,10 @@ namespace Software2_project.Controllers
                 float studentGrade1 = (float)Math.Round(studentGrade * 100f) / 100f;
                 exam.grade = studentGrade1;
 
-                _context.exam_gradeDb.Add(exam);
                 _context.SaveChanges();
                 return RedirectToAction("showGrade", new RouteValueDictionary(new { Controller = "Student", Action = "showGrade", id = viewModel.course.id }));
             }
+
             return RedirectToAction("Login", "Home");
         }
 
@@ -142,15 +147,20 @@ namespace Software2_project.Controllers
             if (Session["username"] != null && Session["role"].Equals("student"))
             {
                 var studentId = (short)Session["id"];
-                var exam = _context.exam_gradeDb.Where(e => e.student_id == studentId && e.course_id == id).FirstOrDefault();
+                var examTest = _context.exam_gradeDb.Where(e => e.student_id == studentId && e.course_id == id).FirstOrDefault();
 
-                var viewModel = new CourseExamViewModel
+                if (examTest != null)
                 {
-                    course = _context.courseDb.Find(id),
-                    exam = exam
-                };
+                    var viewModel = new CourseExamViewModel
+                    {
+                        course = _context.courseDb.Find(id),
+                        exam = examTest
+                    };
 
-                return View(viewModel);
+                    return View(viewModel);
+                }
+
+                else return RedirectToAction("showExam", new RouteValueDictionary(new { Controller = "Student", Action = "showExam", id = id }));
             }
 
             return RedirectToAction("Login", "Home");
