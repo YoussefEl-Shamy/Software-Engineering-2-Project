@@ -1,0 +1,46 @@
+﻿@model Software2_project.ViewModel.StudentExamsCoursesViewModel
+@{
+    ViewBag.Title = "studentReport";
+    Layout = "~/Views/Shared/ProfessorLayout.cshtml";
+}
+
+<h2 style="text-align:center; font-weight:bold; margin-right:auto; margin-left:auto; margin-bottom:12px;">
+    <span style="border-bottom:1.5px solid;">@Model.student.name Report</span>
+</h2>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.student.id)
+    </dt>
+
+    <dd style="border:1.5px solid rgba(230, 115, 0, 1); border-radius:25px; padding:10px; width:30%">
+        @Html.DisplayFor(model => model.student.id)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.student.name)
+    </dt>
+
+    <dd style="border:1.5px solid rgba(230, 115, 0, 1); border-radius:25px; padding:10px; width:30%">
+        @Html.DisplayFor(model => model.student.name)
+    </dd>
+</dl>
+
+<fieldset style="border:1.5px solid rgba(230, 115, 0, 1); border-radius:25px; padding:5px 10px 10px;">
+    <legend style="color:rgb(230, 115, 0); font-weight:bold">Courses & Grades</legend>
+    <div style="font-weight:bold">
+        @for (int i = 0; i < Model.courses.Count; i++)
+        {
+            <span>@Model.courses[i].name : </span>
+            if (Model.exams[i].grade < 50)
+            {
+                <span style="margin-left:10px; margin-right:3px">(@Model.exams[i].grade /100)</span>
+                if (Model.exams[i].grade == 0)
+                { <span style="font-size:15px; color:rgb(235, 100, 0); font-weight:500">May be he doesn't have taken the exam, yet.</span> }
+            }
+            if (Model.exams[i].grade > 50)
+            { <span style="margin-left:10px">(</span><span style="color:#2fd300">@Model.exams[i].grade </span><span>/100)</span> }
+            <br />
+        }
+    </div>
+</fieldset>

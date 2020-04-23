@@ -271,5 +271,79 @@ namespace Software2_project.Controllers
 
             return RedirectToAction("login", "Home");
         }
+
+        public ActionResult enrolledStudents()
+        {
+            if(Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                var students = _context.studentDb.ToList();
+                var professorId = (short)Session["id"];
+                var professor = _context.professorDb.Find(professorId);
+                var professorCourses = professor.courseModel.ToList();
+
+                List<StudentModel> selectedStudents = new List<StudentModel>();
+                for (short i = 0; i < students.Count(); i++)
+                    for (short j = 0; j < professorCourses.Count(); j++)
+                        if (students[i].courseModel.Contains(professorCourses[j]) && !selectedStudents.Contains(students[i]))
+                            selectedStudents.Add(students[i]);
+
+                return View(selectedStudents);
+            }
+
+            return RedirectToAction("Login", "Home");
+        }
+
+        public ActionResult studentReport(short id)
+        {
+            if (Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                var professorId = (short)Session["id"];
+                var professor = _context.professorDb.Find(professorId);
+                var professorCourses = professor.courseModel.ToList();
+
+                var student = _context.studentDb.Find(id);
+                var studentCourses = student.courseModel.ToList();
+
+                var studentExams = _context.exam_gradeDb.Where(se => se.student_id == id).OrderBy(se => se.course_id).ToList();
+                
+                List<CourseModel> commonCourses = new List<CourseModel>();
+                List<ExamModel> commonExams = new List<ExamModel>();
+                for (short i = 0; i < professorCourses.Count(); i++)
+                    if (studentCourses.Contains(professorCourses[i]) && !commonCourses.Contains(professorCourses[i]))
+                        commonCourses.Add(professorCourses[i]);
+
+                List<short> coursesExamsIDs = new List<short>();
+                List<short> commonCoursesIDs = new List<short>();
+
+                for (int i = 0; i < studentExams.Count(); i++)
+                    coursesExamsIDs.Add(studentExams[i].course_id);
+
+                for (int i = 0; i < commonCourses.Count(); i++)
+                    commonCoursesIDs.Add(commonCourses[i].id);
+
+                for (short i=0; i<commonCourses.Count(); i++)
+                {
+                    if (coursesExamsIDs.Contains(commonCoursesIDs[i]))
+                        commonExams.Add(studentExams.Where(se => se.course_id == commonCourses[i].id).Single());
+                    else
+                    {
+                        ExamModel tempExam = new ExamModel();
+                        tempExam.grade = 0;
+                        commonExams.Add(tempExam);
+                    }
+                }
+
+                var viewModel = new StudentExamsCoursesViewModel
+                {
+                    student = student,
+                    courses = commonCourses,
+                    exams = commonExams
+                };
+
+                return View(viewModel);
+            }
+
+            return RedirectToAction("Login", "Home");
+        }
     }
 }

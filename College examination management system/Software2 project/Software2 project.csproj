@@ -198,6 +198,7 @@
     <Compile Include="ViewModel\ProfessorCourseViewModel.cs" />
     <Compile Include="ViewModel\QuestionCourseViewModel.cs" />
     <Compile Include="ViewModel\StudentCourseViewModel.cs" />
+    <Compile Include="ViewModel\StudentExamsCoursesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppLogo.png" />
@@ -275,6 +276,8 @@
     <Content Include="Views\Student\showGrade.cshtml" />
     <Content Include="Views\Professor\listCoursesToShowGrades.cshtml" />
     <Content Include="Views\Professor\showGradesOfCourse.cshtml" />
+    <Content Include="Views\Professor\enrolledStudents.cshtml" />
+    <Content Include="Views\Professor\studentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
