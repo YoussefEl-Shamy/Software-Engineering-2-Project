@@ -230,5 +230,46 @@ namespace Software2_project.Controllers
 
             else return RedirectToAction("login", "Home");
         }
+
+        public ActionResult listCoursesToShowGrades()
+        {
+            if (Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                var professorId = (short)Session["id"];
+                ProfessorModel professor = _context.professorDb.Find(professorId);
+                var courses = professor.courseModel.ToList();
+                return View(courses);
+            }
+
+            return RedirectToAction("login", "Home");
+        }
+
+        public ActionResult showGradesOfCourse(short id)
+        {
+            if (Session["username"] != null && Session["role"].Equals("professor"))
+            {
+                var students = _context.studentDb.ToList();
+                var course = _context.courseDb.Find(id);
+                var exams = _context.exam_gradeDb.Where(e => e.course_id == id).OrderBy(e => e.student_id).ToList();
+
+                List<StudentModel> studentsInCourse = new List<StudentModel>();
+                studentsInCourse.Clear();
+
+                for (short i = 0; i < students.Count(); i++)
+                    if (students[i].courseModel.Contains(course))
+                        studentsInCourse.Add(students[i]);
+
+                var viewModel = new ExamStudentsViewModel
+                {
+                    exams = exams,
+                    students = studentsInCourse,
+                    course = course
+                };
+
+                return View(viewModel);
+            }
+
+            return RedirectToAction("login", "Home");
+        }
     }
 }

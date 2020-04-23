@@ -194,6 +194,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CourseExamViewModel.cs" />
     <Compile Include="ViewModel\CourseQuestionsViewModel.cs" />
+    <Compile Include="ViewModel\ExamStudentsViewModel.cs" />
     <Compile Include="ViewModel\ProfessorCourseViewModel.cs" />
     <Compile Include="ViewModel\QuestionCourseViewModel.cs" />
     <Compile Include="ViewModel\StudentCourseViewModel.cs" />
@@ -272,6 +273,8 @@
     <Content Include="Views\Student\listExams.cshtml" />
     <Content Include="Views\Student\showExam.cshtml" />
     <Content Include="Views\Student\showGrade.cshtml" />
+    <Content Include="Views\Professor\listCoursesToShowGrades.cshtml" />
+    <Content Include="Views\Professor\showGradesOfCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
