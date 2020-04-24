@@ -12,61 +12,61 @@
 {
     for (int i = 0; i < Model.questions.Count(); i++)
     {
-        <p style="font-weight:bold; border:1.5px solid rgb(235, 100, 0); padding:10px; margin: 35px 0 35px 0; border-radius: 15px">
-            <span style="margin-right:10px;">Question @(i + 1):</span>
-            @Model.questions[i].question
-        </p>
-
-        <div class="grid" style="font-weight: bold">
-            <label class="custom-control custom-radio">
-                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer1, new { id = "choice1" + i, @class = "custom-control-input" })
-                @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
+        <div oncontextmenu="return false">
+            <div style="font-weight:bold; border:1.5px solid rgb(235, 100, 0); padding:10px; margin: 35px 0 35px 0; border-radius: 15px">
+                <p>
+                    <span style="margin-right:10px;">Question @(i + 1):</span>
+                    @Model.questions[i].question
+                </p>
                 @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
-                <br />
-            </label>
+            </div>
 
-            <label class="custom-control custom-radio">
-                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer2, new { id = "choice2" + i, @class = "custom-control-input" })
-                @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
-                @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
-                <br />
-            </label>
-
-            @if (Model.questions[i].answer3 != null)
-            {
+            <div class="grid" style="font-weight: bold;">
                 <label class="custom-control custom-radio">
-                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer3, new { id = "choice3" + i, @class = "custom-control-input" })
-                    @Html.Label(Model.questions[i].answer3, new { @for = "choice3" + i, @class = "custom-control-label" })
-                    @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
+                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer1, new { id = "choice1" + i, @class = "custom-control-input" })
+                    @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
                     <br />
                 </label>
-            }
 
-            @if (Model.questions[i].answer4 != null)
-            {
                 <label class="custom-control custom-radio">
-                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer4, new { id = "choice4" + i, @class = "custom-control-input" })
-                    @Html.Label(Model.questions[i].answer4, new { @for = "choice4" + i, @class = "custom-control-label" })
-                    @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
+                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer2, new { id = "choice2" + i, @class = "custom-control-input" })
+                    @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
                     <br />
                 </label>
-            }
 
-            @if (Model.questions[i].answer5 != null)
-            {
-                <label class="custom-control custom-radio">
-                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer5, new { id = "choice4" + i, @class = "custom-control-input" })
-                    @Html.Label(Model.questions[i].answer5, new { @for = "choice4" + i, @class = "custom-control-label" })
-                    @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
-                    <br />
-                </label>
-            }
+                @if (Model.questions[i].answer3 != null)
+                {
+                    <label class="custom-control custom-radio">
+                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer3, new { id = "choice3" + i, @class = "custom-control-input" })
+                        @Html.Label(Model.questions[i].answer3, new { @for = "choice3" + i, @class = "custom-control-label" })
+                        <br />
+                    </label>
+                }
+
+                @if (Model.questions[i].answer4 != null)
+                {
+                    <label class="custom-control custom-radio">
+                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer4, new { id = "choice4" + i, @class = "custom-control-input" })
+                        @Html.Label(Model.questions[i].answer4, new { @for = "choice4" + i, @class = "custom-control-label" })
+                        <br />
+                    </label>
+                }
+
+                @if (Model.questions[i].answer5 != null)
+                {
+                    <label class="custom-control custom-radio">
+                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer5, new { id = "choice4" + i, @class = "custom-control-input" })
+                        @Html.Label(Model.questions[i].answer5, new { @for = "choice4" + i, @class = "custom-control-label" })
+                        <br />
+                    </label>
+                }
+            </div>
+            <hr style="background-color:rgb(235, 100, 0); height: 2px" />
         </div>
-        <hr style="background-color:rgb(235, 100, 0); height: 2px" />
         @Html.HiddenFor(m => m.course.id)
     }
 
-    <button type="submit" class="btn btn-primary" style="border-radius:10px;margin-top:10px">Save Answers</button>
+    <button type="submit" class="btn btn-primary" style="border-radius: 10px;margin-top: 10px" onclick="onSubmitClientClick()">Save Answers</button>
 }
 
 <style>
@@ -77,6 +77,33 @@
         grid-gap: 25px
     }
 </style>
+
+
+<script type="text/javascript">
+
+    var areYouReallySure = false;
+    function areYouSure() {
+        if (allowPrompt) {
+            if (!areYouReallySure && true) {
+                areYouReallySure = true;
+                var confMessage = "Warning : If you leave this page your grade will be discard and you can not access this exam again."
+                return confMessage;
+            }
+        }
+        else {
+            allowPrompt = true;
+        }   
+    }
+
+    function onSubmitClientClick() {
+        allowPrompt = false;
+    }
+
+    var allowPrompt = true;
+    window.onbeforeunload = areYouSure;
+
+    alert("Warning : If you leave this page your grade will be discard and you can not access this exam again. So do not leave the page or reload it");
+</script>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

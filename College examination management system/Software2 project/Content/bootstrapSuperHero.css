@@ -11835,8 +11835,10 @@ label,
 }
 
 .field-validation-error {
-    font-weight: 100;
+    font-weight: 600;
     color: red;
+    border: 1.5px solid red;
+    border-radius: 15px
 }
 
 .input-validation-error {

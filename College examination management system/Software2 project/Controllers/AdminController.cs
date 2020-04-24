@@ -122,6 +122,7 @@ namespace Software2_project.Controllers
             studentInDb.gender = viewModel.student.gender;
             studentInDb.age = viewModel.student.age;
             studentInDb.username = viewModel.student.username;
+            studentInDb.password = viewModel.student.password;
 
             studentInDb.courseModel.Clear();
             for (int i = 0; i < viewModel.courses.Count; i++)

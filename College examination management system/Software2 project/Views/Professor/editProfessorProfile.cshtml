@@ -23,6 +23,12 @@
     </div>
 
     <div class="form-group" style="font-weight:bold">
+        @Html.LabelFor(m => m.password)
+        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Enter Professor Username" })
+        @Html.ValidationMessageFor(m => m.password)
+    </div>
+
+    <div class="form-group" style="font-weight:bold">
         @Html.LabelFor(m => m.age)
         @Html.TextBoxFor(m => m.age, new { @class = "form-control", placeholder = "Enter Professor Age" })
         @Html.ValidationMessageFor(m => m.age)

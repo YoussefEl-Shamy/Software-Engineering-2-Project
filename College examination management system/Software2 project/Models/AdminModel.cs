@@ -20,7 +20,7 @@ namespace Software2_project.Models
         [Display(Name = "Username")]
         public string username { get; set; }
         [Required]
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "Your password must be at least 8 charecter such as numbres and letters")]
         [MaxLength(25)]
         [Display(Name = "Password")]
         public string password { get; set; }

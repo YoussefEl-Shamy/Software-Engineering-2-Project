@@ -23,6 +23,12 @@
     </div>
 
     <div class="form-group" style="font-weight:bold">
+        @Html.LabelFor(m => m.professor.password)
+        @Html.PasswordFor(m => m.professor.password, new { @class = "form-control", placeholder = "Enter Professor Username" })
+        @Html.ValidationMessageFor(m => m.professor.password)
+    </div>
+
+    <div class="form-group" style="font-weight:bold">
         @Html.LabelFor(m => m.professor.age)
         @Html.TextBoxFor(m => m.professor.age, new { @class = "form-control", placeholder = "Enter Professor Age" })
         @Html.ValidationMessageFor(m => m.professor.age)
@@ -75,7 +81,7 @@
                 }
 
                 <label class="checkbox-inline custom-control custom-checkbox">
-                    @Html.CheckBoxFor(m => Model.courses[i].IsChecked, new { @class = "custom-control-input", id = "course "+i})
+                    @Html.CheckBoxFor(m => Model.courses[i].IsChecked, new { @class = "custom-control-input", id = "course " + i })
                     <label class="custom-control-label" for="course @i">@Model.courses[i].name</label>
                     @Html.HiddenFor(m => m.courses[i].id)
                     @Html.HiddenFor(m => m.courses[i].code)
