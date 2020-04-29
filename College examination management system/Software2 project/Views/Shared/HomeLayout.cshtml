@@ -9,11 +9,35 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 20px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px grey; 
+          border-radius: 3.5px;
+        }
+ 
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #ef6102; 
+          border-radius: 3px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #ca5000
+        }
+    </style>
 </head>
 <body>
     <nav id="navbarResponsive" class="navbar navbar-expand-lg navbar-dark bg-primary navbar-collapse collapse show" style="margin-top:-50px; margin-bottom:20px; position:sticky; top:0">
         <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="font-weight: bold">
-            <img src="~/robot.png" height="40" style="margin-right:-15px;"/><span style="z-index:-1">FCAIH</span>
+            <img src="~/robot.png" height="40" style="margin-right:-15px;"/><span style="        z-index: -1
+">FCAIH</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
