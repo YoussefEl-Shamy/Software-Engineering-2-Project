@@ -65,22 +65,25 @@
     @Html.HiddenFor(m => m.student.id)
     <fieldset style="border:1.5px solid rgba(230, 115, 0, 1); border-radius:25px; padding:10px;">
         <legend style="color:rgb(230, 115, 0); font-weight:bold">Courses</legend>
-        <div class="grid" style="font-weight:bold">
-            @for (int i = 0; i < Model.courses.Count; i++)
-            {
-                if (Model.checkedCourses.Contains(Model.courses[i]))
+        <div class="container" style="font-weight:bold">
+            <div class="row">
+                @for (int i = 0; i < Model.courses.Count; i++)
                 {
-                    Model.courses[i].IsChecked = true;
+                    if (Model.checkedCourses.Contains(Model.courses[i]))
+                    {
+                        Model.courses[i].IsChecked = true;
+                    }
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <label class="checkbox-inline custom-control custom-checkbox">
+                            @Html.CheckBoxFor(m => Model.courses[i].IsChecked, new { @class = "custom-control-input", id = "course " + i })
+                            <label class="custom-control-label" for="course @i">@Model.courses[i].name</label>
+                            @Html.HiddenFor(m => m.courses[i].id)
+                            @Html.HiddenFor(m => m.courses[i].code)
+                            @Html.HiddenFor(m => m.courses[i].name)
+                        </label>
+                    </div>
                 }
-
-                <label class="checkbox-inline custom-control custom-checkbox">
-                    @Html.CheckBoxFor(m => Model.courses[i].IsChecked, new { @class = "custom-control-input", id = "course " + i })
-                    <label class="custom-control-label" for="course @i">@Model.courses[i].name</label>
-                    @Html.HiddenFor(m => m.courses[i].id)
-                    @Html.HiddenFor(m => m.courses[i].code)
-                    @Html.HiddenFor(m => m.courses[i].name)
-                </label>
-            }
+            </div>
         </div>
     </fieldset>
 

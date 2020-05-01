@@ -21,45 +21,56 @@
                 @Html.ValidationMessageFor(m => m.questions[i].selectChoice)
             </div>
 
-            <div class="grid" style="font-weight: bold;">
-                <label class="custom-control custom-radio">
-                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer1, new { id = "choice1" + i, @class = "custom-control-input" })
-                    @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
-                    <br />
-                </label>
+            <div class="container" style="font-weight: bold;">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-lg-6">
+                        <label class="custom-control custom-radio">
+                            @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer1, new { id = "choice1" + i, @class = "custom-control-input" })
+                            @Html.Label(Model.questions[i].answer1, new { @for = "choice1" + i, @class = "custom-control-label" })
+                            <br />
+                        </label>
+                    </div>
 
-                <label class="custom-control custom-radio">
-                    @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer2, new { id = "choice2" + i, @class = "custom-control-input" })
-                    @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
-                    <br />
-                </label>
+                    <div class="col-12 col-sm-12 col-lg-6">
+                        <label class="custom-control custom-radio">
+                            @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer2, new { id = "choice2" + i, @class = "custom-control-input" })
+                            @Html.Label(Model.questions[i].answer2, new { @for = "choice2" + i, @class = "custom-control-label" })
+                            <br />
+                        </label>
+                    </div>
+                    @if (Model.questions[i].answer3 != null)
+                    {
+                        <div class="col-12 col-sm-12 col-lg-6">
+                            <label class="custom-control custom-radio">
+                                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer3, new { id = "choice3" + i, @class = "custom-control-input" })
+                                @Html.Label(Model.questions[i].answer3, new { @for = "choice3" + i, @class = "custom-control-label" })
+                                <br />
+                            </label>
+                        </div>
+                    }
 
-                @if (Model.questions[i].answer3 != null)
-                {
-                    <label class="custom-control custom-radio">
-                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer3, new { id = "choice3" + i, @class = "custom-control-input" })
-                        @Html.Label(Model.questions[i].answer3, new { @for = "choice3" + i, @class = "custom-control-label" })
-                        <br />
-                    </label>
-                }
+                    @if (Model.questions[i].answer4 != null)
+                    {
+                        <div class="col-12 col-sm-12 col-lg-6">
+                            <label class="custom-control custom-radio">
+                                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer4, new { id = "choice4" + i, @class = "custom-control-input" })
+                                @Html.Label(Model.questions[i].answer4, new { @for = "choice4" + i, @class = "custom-control-label" })
+                                <br />
+                            </label>
+                        </div>
+                    }
 
-                @if (Model.questions[i].answer4 != null)
-                {
-                    <label class="custom-control custom-radio">
-                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer4, new { id = "choice4" + i, @class = "custom-control-input" })
-                        @Html.Label(Model.questions[i].answer4, new { @for = "choice4" + i, @class = "custom-control-label" })
-                        <br />
-                    </label>
-                }
-
-                @if (Model.questions[i].answer5 != null)
-                {
-                    <label class="custom-control custom-radio">
-                        @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer5, new { id = "choice4" + i, @class = "custom-control-input" })
-                        @Html.Label(Model.questions[i].answer5, new { @for = "choice4" + i, @class = "custom-control-label" })
-                        <br />
-                    </label>
-                }
+                    @if (Model.questions[i].answer5 != null)
+                    {
+                        <div class="col-12 col-sm-12 col-lg-6">
+                            <label class="custom-control custom-radio">
+                                @Html.RadioButtonFor(m => m.questions[i].selectChoice, Model.questions[i].answer5, new { id = "choice4" + i, @class = "custom-control-input" })
+                                @Html.Label(Model.questions[i].answer5, new { @for = "choice4" + i, @class = "custom-control-label" })
+                                <br />
+                            </label>
+                        </div>
+                    }
+                </div>
             </div>
             <hr style="background-color:rgb(235, 100, 0); height: 2px" />
         </div>
