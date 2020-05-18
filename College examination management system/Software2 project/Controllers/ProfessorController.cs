@@ -107,6 +107,7 @@ namespace Software2_project.Controllers
             if (Question.id == 0)
                 _context.questionDb.Add(Question);
 
+            Question.selectChoice = Question.rightAnswer;
             _context.SaveChanges();
 
             if (saveE != null)
@@ -161,6 +162,7 @@ namespace Software2_project.Controllers
                 question.answer3 = counter.answer3;
                 question.answer4 = counter.answer4;
                 question.answer5 = counter.answer5;
+                question.selectChoice = counter.rightAnswer;
                 question.rightAnswer = counter.rightAnswer;
                 question.CourseId = counter.CourseId;
             }

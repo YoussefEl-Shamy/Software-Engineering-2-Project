@@ -75,6 +75,7 @@
 
         @Html.HiddenFor(m => m.questions[i].CourseId)
         @Html.HiddenFor(m => m.questions[i].id)
+        @Html.HiddenFor(m => m.questions[i].selectChoice)
         <hr style="background-color:rgb(235, 100, 0); height: 2px" />
     }
     if (Model.questions.Count >= 1)
